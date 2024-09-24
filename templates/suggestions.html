@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/suggestions.css">
     <title>Suggestion de matériel</title>
 </head>
 
@@ -14,15 +16,24 @@
         <div>
             <img src="">
         </div>
-        <div>
+        <div id="form_sugg">
+            <p id="titre">Faire une suggestion de matériel</p>
             <form method="post" action="" id="formulaire_suggestion">
-                <label for="username">Nom du matériel:</label>
-                <input type="text" name="nom_materiel">
-                <label for="username">Nombre :<label>
-                <input type="numeber" name="nombre_materiel">
-                <label for="username">Description du matériel et de son utilité :</label>
-                <input type="text" name="description_materiel">
-                <div id="bouton_form_suggestion"><input type="submit" value="Envoyer" id="bouton_form"></div>
+                <div id="form">
+                    <div class="input_form">
+                        <label for="nom_mat">Nom du matériel:</label>
+                        <input class="input" type="text" name="nom_materiel">
+                    </div>
+                    <div class="input_form">
+                        <label for="nombre_mat">Nombre :</label>
+                        <input class="input" type="number" name="nombre_materiel">
+                    </div>
+                    <div class="input_form">
+                        <label for="descr_mat">Description du matériel et de son utilité :</label>
+                        <textarea type="text" name="description_materiel" rows="4"></textarea>
+                    </div>
+                    <div id="bouton_form_suggestion"><input type="submit" value="Envoyer" id="bouton_form"></div>
+                </div>
             </form>
         </div>
         <div>

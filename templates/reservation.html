@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/reservation.css" />
+    <link rel="stylesheet" href="static/css/calendrier.css" />
+    <script src="static/js/reservation.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <a href="accueil.html" class="back-button">&#8592;</a>
+    <!-- Flèche de retour -->
+    <div class="container">
+      <!-- Deuxième section (droite) maintenant à gauche -->
+      <div class="section">
+        <h1>Calendrier</h1>
+        <div class="elegant-calencar">
+          <p id="reset">reset</p>
+          <div id="header" class="clearfix">
+            <div class="pre-button"><</div>
+            <div class="head-info">
+              <div class="head-day"></div>
+              <div class="head-month"></div>
+            </div>
+            <div class="next-button">></div>
+          </div>
+          <table id="calendar">
+            <thead>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="selectedDateDisplay">Date sélectionnée : aucune</p>
+      </div>
+
+      <!-- Trait séparateur vertical, centré entre les sections -->
+      <div class="separator"></div>
+
+      <!-- Première section (gauche) maintenant à droite -->
+      <div class="section section-left">
+        <h2 class="header-title">Quel matériel voulez-vous emprunter ?</h2>
+        <!-- Chaque ligne avec cercle, texte et bouton -->
+
+        <div id="material-availability">
+          {% for materiel in available_materials %}
+          <div class="row">
+            <div class="circle">{{ materiel[1] }}</div>
+            <div class="row-text">{{ materiel[0] }}</div>
+            <button onclick="changeColor(this)">Je réserve</button>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <script src="static/js/calendrier.js"></script>
+  </body>
+</html>

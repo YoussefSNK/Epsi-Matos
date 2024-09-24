@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
+<<<<<<< HEAD
+=======
+
+>>>>>>> 752472e88c2dd8eddd5bdf0320e13850aba91cfa
 from datetime import datetime
 
 app = Flask(__name__)                                                                                                                  

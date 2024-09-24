@@ -7,21 +7,18 @@ body {
     height: 100vh;
 }
 
-.centered-block {
+.custom-container {
     width: 800px;
     height: 500px;
-    background-color: white;
-    border: 2px solid rgb(0, 0, 0);
     border-radius: 15px;
-    box-shadow: 15px 15px --yellow;
     display: flex;
+    background-color: white;
     flex-direction: column; 
     justify-content: flex-start; 
     align-items: center; 
-    padding: 20px;
 }
 
-.centered-block h1 {
+.custom-container h1 {
     font-size: 24px;
     margin: 0;
     padding-bottom: 20px; 
@@ -29,4 +26,56 @@ body {
     font-family: 'Source Sans 3', sans-serif;
     text-align: center; 
     width: 100%; 
+}
+
+.input-group {
+    width: 80%;
+    margin: 10px 0; 
+    text-align: left; 
+}
+
+.input-group label {
+    font-size: 16px;
+    color: #333;
+    font-family: 'Source Sans 3', sans-serif;
+    margin-bottom: 5px; 
+    display: block; 
+}
+
+.input-field {
+    width: 100%; 
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: 'Source Sans 3', sans-serif;
+    outline: none;
+    background-color: #f0f0f0; 
+    border: none;
+}
+
+.input-field:focus {
+    box-shadow: black 0px 0px 5px; 
+}
+
+textarea.input-field {
+    resize: vertical; 
+    height: 100px; 
+}
+
+.submit-button {
+    width: 20%; 
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--blue); 
+    color: var(--white); 
+    font-size: 16px;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.submit-button:hover {
+    background-color: var(--deep-purple); 
 }

@@ -25,3 +25,15 @@ CREATE TABLE materiel(
 );
 
 
+DROP TABLE IF EXISTS reservation;
+CREATE TABLE reservation(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date_emprunt TEXT NOT NULL,
+    debut_emprunt_heure INT NOT NULL,
+    fin_emprunt_heure INT NOT NULL,
+    id_user INTEGER,
+    id_materiel INTEGER,
+    FOREIGN KEY (id_user) REFERENCES user(id),
+    FOREIGN KEY (id_materiel) REFERENCES materiel(id)
+
+);

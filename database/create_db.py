@@ -18,8 +18,10 @@ cur.execute("INSERT INTO materiel (nom, stock) VALUES (?, ?)",('Bras Robot', '3'
 cur.execute("INSERT INTO materiel (nom, stock) VALUES (?, ?)",('Lampe Terrible', '1'))
 cur.execute("INSERT INTO materiel (nom, stock) VALUES (?, ?)",('Chaise', '0'))
 
-cur.execute("INSERT INTO reservation (date_emprunt, debut_emprunt_heure, fin_emprunt_heure, id_user, id_materiel) VALUES (?, ?)",('2024-09-30', 9, 18, 1, 1))
-cur.execute("INSERT INTO reservation (date_emprunt, debut_emprunt_heure, fin_emprunt_heure, id_user, id_materiel) VALUES (?, ?)",('2024-09-30', 9, 13, 1, 0))
+cur.execute("INSERT INTO reservation (date_emprunt, debut_emprunt_heure, fin_emprunt_heure, id_user, id_materiel) VALUES (?, ?, ?, ?, ?)",('2024-09-30', 9, 18, 1, 1))
+cur.execute("INSERT INTO reservation (date_emprunt, debut_emprunt_heure, fin_emprunt_heure, id_user, id_materiel) VALUES (?, ?, ?, ?, ?)",('2024-09-30', 9, 13, 1, 0))
+cur.execute("INSERT INTO reservation (date_emprunt, debut_emprunt_heure, fin_emprunt_heure, id_user, id_materiel) VALUES (?, ?, ?, ?, ?)",('2024-09-24', 9, 13, 0, 0))
+cur.execute("INSERT INTO reservation (date_emprunt, debut_emprunt_heure, fin_emprunt_heure, id_user, id_materiel) VALUES (?, ?, ?, ?, ?)",('2024-09-24', 9, 13, 0, 1))
 
 
 

@@ -1,4 +1,7 @@
 #header-container {
+<<<<<<< HEAD
+    background-color: blue;
+=======
     display: flex;
     align-items: center;
     height: 70px;
@@ -30,4 +33,5 @@
     border-style: none;
     border-radius: 8px;
     padding: 10px;
+>>>>>>> 957206425c21deb5d078df4d736d97b6cb9cacb2
 }

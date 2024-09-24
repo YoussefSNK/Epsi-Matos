@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from urllib.request import urlopen
 import sqlite3
-
 from datetime import datetime
 
 app = Flask(__name__)                                                                                                                  
@@ -86,6 +84,7 @@ def CheckCalendar():
         conn = sqlite3.connect('database/database.db')
         cursor = conn.cursor()
         cursor.execute('SELECT titre, salle, description FROM signalement WHERE etat = "Ouvert"')
+
 
 
     else:

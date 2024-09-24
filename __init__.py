@@ -98,6 +98,19 @@ def CheckCalendar():
     else:
         return redirect('/')       
 
+@app.route('/report', methods=['GET'])
+def formulaire_signalement():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('report.html')
+    else:
+        return redirect('/')
+    
+@app.route('/booking', methods=['GET'])
+def formulaire_reservation():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('bookings.html')
+    else:
+        return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

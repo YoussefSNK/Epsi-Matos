@@ -10,13 +10,37 @@
 
 <body>
     {% include 'header.html' %}
-    <div class="button_one_and_two">
-        <a href="/poster_list">
-            <button>Voir vos trucs</button>
-        </a>
-        <a href="/poster_creator">
-            <button>Création de con</button>
-        </a>
+    <div id="home-container">
+        <div id="left-section">
+            <div>
+                <input class="searchbar" type="text" placeholder="⌕  Rechercher une salle">
+            </div>
+            <div>
+                <div class="dropdown">Etage ↓</div>
+            </div>
+            <div id="list-reports"></div>
+        </div>
+        <div class="vertical-line"></div>
+        <div id="home-links">
+            <a href="/report">
+                <div class="custom-container" id="reports-bloc">
+                    Signaler du matériel défaillant
+                </div>
+            </a>
+            <a href="/booking">
+                <div class="custom-container" id="bookings-bloc">
+                    Réserver du matériel
+                </div>
+            </a>
+            <a href="/suggestion">
+                <div class="custom-container" id="suggestions-bloc">
+                    Suggestion de matériel
+                </div>
+            </a>
+        </div>
     </div>
-</body> 
+</body>
+<footer>
+    {% include 'footer.html' %}
+</footer>
 </html>

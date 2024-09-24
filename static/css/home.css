@@ -1,0 +1,65 @@
+#reports-bloc, #bookings-bloc, #suggestions-bloc {
+    margin: 30px;
+    height: 70px;
+    width: 70%;
+}
+
+#bookings-bloc {
+    box-shadow: 10px 10px var(--blue);
+}
+
+#bookings-bloc:hover {
+    box-shadow: 15px 15px var(--blue);
+}
+
+#suggestions-bloc {
+    box-shadow: 10px 10px var(--pink);
+}
+
+#suggestions-bloc:hover {
+    box-shadow: 15px 15px var(--pink);
+}
+
+#home-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+#home-links {
+    width: 45%;
+}
+
+#left-section {
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45%;
+}
+
+.searchbar {
+    background-color: var(--light-grey);
+    color: var(--grey);
+    border-radius: 15px;
+    border-style: none;
+    padding: 5px 10px;
+}
+
+.dropdown {
+    display: flex;
+    background-color: var(--grey);
+    color: var(--dark-grey);
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 10%;
+}
+
+#list-reports {
+    border-radius: 15px;
+    background-color: var(--light-grey);
+    height: 300px;
+    width: 80%;
+}

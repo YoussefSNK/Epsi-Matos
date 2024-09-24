@@ -1,4 +1,6 @@
-<div id="quarter-circle" onclick="toggleQuarterCircle()">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+
+<div id="header-container">
     <img id="icon" src="{{ url_for('static', filename='icon.png') }}" alt="User Icon">
     <div class="buttons">
         <button onclick="location.href='/sign_out'">Se Déconnecter</button>

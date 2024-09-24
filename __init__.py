@@ -70,7 +70,7 @@ def ReadBDD():
     if 'authentifie' in session and session['authentifie']:
         conn = sqlite3.connect('database/database.db')
         cursor = conn.cursor()
-        cursor.execute('SELECT titre, salle, description FROM signalement WHERE etat = "Ouvert"')
+        cursor.execute('SELECT titre, salle, description, etat FROM signalement')
         data = cursor.fetchall()
         conn.close()
 

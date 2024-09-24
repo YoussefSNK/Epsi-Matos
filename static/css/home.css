@@ -71,14 +71,28 @@
     margin-top: 20px;
 }
 
-#status-color {
-    width: 10px;
-    height: 10px;
-    border-radius: 15px;
-    background-color: var(--blue);
-}
-
 #report-first-row {
     display: flex;
     justify-content: space-between;
+}
+
+.a-traiter {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    background-color: red;
+}
+
+.ferme {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    background-color: green;
+}
+
+.en-cours {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    background-color: orange;
 }

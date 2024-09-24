@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Perso</title>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <table id="poster-table">
+        <thead>
+            <tr>
+                <th class="sortable" onclick="sortTable(0)">Titre</th>
+                <th class="sortable" onclick="sortTable(1)">Salle</th>
+                <th class="sortable" onclick="sortTable(2)">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>            
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

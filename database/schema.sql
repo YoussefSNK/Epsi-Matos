@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS user;
+CREATE TABLE user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    login TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS signalement;
+CREATE TABLE signalement(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    titre TEXT NOT NULL,
+    salle TEXT NOT NULL,
+    description TEXT NOT NULL,
+    etat TEXT NOT NULL,
+    id_user INTEGER,
+    FOREIGN KEY (id_user) REFERENCES user(id)
+);
+
+
+DROP TABLE IF EXISTS materiel;
+CREATE TABLE materiel(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom TEXT NOT NULL,
+    stock INTEGER
+);
+
+

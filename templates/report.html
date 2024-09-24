@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/report.css') }}">
+    <title>Signaler un matériel défaillant</title>
+  </head>
+  <body>
+    <div class="custom-container">
+      <h1>Signaler un matériel défaillant</h1>
+
+      <div class="input-group">
+        <label for="nom-materiel">Salle</label>
+        <input type="text" id="nom-materiel" class="input-field" placeholder="Salle">
+      </div>
+
+      <div class="input-group">
+        <label for="numero-serie">Type</label>
+        <input type="text" id="numero-serie" class="input-field" placeholder="Type">
+      </div>
+
+      <div class="input-group">
+        <label for="description-probleme">Description du problème</label>
+        <textarea id="description-probleme" class="input-field" placeholder="Décrivez le problème ici..." rows="5"></textarea>
+      </div>
+
+      <button class="submit-button">Envoyer</button> 
+    </div>
+  </body>
+</html>

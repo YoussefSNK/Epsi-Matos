@@ -1,0 +1,84 @@
+#reports-bloc, #bookings-bloc, #suggestions-bloc {
+    margin: 30px;
+    height: 70px;
+    width: 70%;
+}
+
+#bookings-bloc {
+    box-shadow: 10px 10px var(--blue);
+}
+
+#bookings-bloc:hover {
+    box-shadow: 15px 15px var(--blue);
+}
+
+#suggestions-bloc {
+    box-shadow: 10px 10px var(--pink);
+}
+
+#suggestions-bloc:hover {
+    box-shadow: 15px 15px var(--pink);
+}
+
+#home-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+#home-links {
+    width: 45%;
+}
+
+#left-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    width: 45%;
+}
+
+#left-items-container {
+    width: 80%;
+}
+
+.searchbar {
+    background-color: var(--light-grey);
+    color: var(--grey);
+    border-radius: 15px;
+    border-style: none;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
+
+#list-reports {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: var(--light-grey);
+    align-items: center;
+    height: 70vh;
+    width: 100%;
+}
+
+#report {
+    width: 80%;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    padding: 10px;
+    background-color: var(--white);
+    margin-top: 20px;
+}
+
+#status-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    background-color: var(--blue);
+}
+
+#report-first-row {
+    display: flex;
+    justify-content: space-between;
+}

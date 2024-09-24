@@ -10,13 +10,6 @@ def est_authentifie():
     return session.get('authentifie')
 
 
-@app.route('/', methods=['GET'])
-def return_home():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('home.html')
-    else:
-        return redirect(url_for('authentification'))
-
 
 
 @app.route('/sign_up', methods=['GET'])
@@ -72,7 +65,7 @@ def verify_credentials(username, password):
 
 
 
-@app.route('/home')
+@app.route('/')
 def ReadBDD():
     if 'authentifie' in session and session['authentifie']:
         conn = sqlite3.connect('database/database.db')
@@ -81,7 +74,7 @@ def ReadBDD():
         data = cursor.fetchall()
         conn.close()
 
-        return render_template('read_data.html', data=data)
+        return render_template('home.html', data=data)
     else:
         return redirect('/')
 
@@ -93,9 +86,23 @@ def CheckCalendar():
         cursor.execute('SELECT titre, salle, description FROM signalement WHERE etat = "Ouvert"')
 
 
+
     else:
         return redirect('/')       
 
+@app.route('/report', methods=['GET'])
+def formulaire_signalement():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('report.html')
+    else:
+        return redirect('/')
+    
+@app.route('/booking', methods=['GET'])
+def formulaire_reservation():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('bookings.html')
+    else:
+        return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

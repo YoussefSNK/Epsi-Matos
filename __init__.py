@@ -1,9 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from urllib.request import urlopen
 import sqlite3
-import os
-from PIL import Image
-
 from datetime import datetime
 
 app = Flask(__name__)                                                                                                                  

@@ -62,17 +62,8 @@ def verify_credentials(username, password):
     return user
 
 
-@app.route('/', methods=['GET'])
-def return_home():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('home.html')
-    else:
-        return redirect(url_for('authentification'))
 
-
-
-
-@app.route('/home')
+@app.route('/')
 def ReadBDD():
     if 'authentifie' in session and session['authentifie']:
         conn = sqlite3.connect('database/database.db')

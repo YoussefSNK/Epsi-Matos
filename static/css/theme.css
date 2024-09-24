@@ -45,6 +45,7 @@ a {
 
 .custom-container:hover {
   box-shadow: 15px 15px var(--yellow);
+  cursor: pointer;
 }
 
 .vertical-line {

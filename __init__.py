@@ -12,13 +12,6 @@ def est_authentifie():
     return session.get('authentifie')
 
 
-@app.route('/', methods=['GET'])
-def return_home():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('home.html')
-    else:
-        return redirect(url_for('authentification'))
-
 
 
 @app.route('/sign_up', methods=['GET'])
@@ -74,7 +67,7 @@ def verify_credentials(username, password):
 
 
 
-@app.route('/home')
+@app.route('/')
 def ReadBDD():
     if 'authentifie' in session and session['authentifie']:
         conn = sqlite3.connect('database/database.db')
@@ -83,7 +76,7 @@ def ReadBDD():
         data = cursor.fetchall()
         conn.close()
 
-        return render_template('read_data.html', data=data)
+        return render_template('home.html', data=data)
     else:
         return redirect('/')
 

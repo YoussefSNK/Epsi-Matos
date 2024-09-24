@@ -12,13 +12,21 @@
     {% include 'header.html' %}
     <div id="home-container">
         <div id="left-section">
-            <div>
+            <div id="left-items-container">
                 <input class="searchbar" type="text" placeholder="⌕  Rechercher une salle">
+                <div id="list-reports">
+                    {% for row in data %}
+                    <div id="report">
+                        <div id="report-first-row">
+                            Salle : {{ row[1] }}
+                            <div id="status-color"></div>
+                        </div>
+                        <div>Matériel concerné : {{ row[0] }}</div>
+                        <div>Description : {{ row[2] }}</div>            
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div>
-                <div class="dropdown">Etage ↓</div>
-            </div>
-            <div id="list-reports"></div>
         </div>
         <div class="vertical-line"></div>
         <div id="home-links">
@@ -43,4 +51,5 @@
 <footer>
     {% include 'footer.html' %}
 </footer>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </html>

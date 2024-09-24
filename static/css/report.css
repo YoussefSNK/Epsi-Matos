@@ -8,8 +8,8 @@ body {
 }
 
 .custom-container {
-    width: 800px;
-    height: 500px;
+    width: 60vw;
+    height: 80vh;
     border-radius: 15px;
     display: flex;
     background-color: white;

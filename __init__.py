@@ -1,9 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
-<<<<<<< HEAD
-=======
-
->>>>>>> 752472e88c2dd8eddd5bdf0320e13850aba91cfa
 from datetime import datetime
 
 app = Flask(__name__)                                                                                                                  
@@ -97,8 +93,16 @@ def CheckCalendar():
         cursor.execute('SELECT titre, salle, description FROM signalement WHERE etat = "Ouvert"')
 
 
+
     else:
         return redirect('/')       
+
+@app.route('/report', methods=['GET'])
+def formulaire_signalement():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('report.html')
+    else:
+        return redirect('/')
 
 
 if __name__ == '__main__':

@@ -28,8 +28,7 @@ def enregistrer_client():
     if user:
         session['authentifie'] = True
         session['user_id'] = user[0] 
-        return redirect(url_for('return_home'))
-    
+        return redirect('/')
     return redirect('/')
 
 @app.route('/sign_in', methods=['GET', 'POST'])
@@ -74,7 +73,7 @@ def ReadBDD():
 
         return render_template('home.html', data=data)
     else:
-        return redirect('/')
+        return redirect('/sign_in')
 
 @app.route('/reservation')
 def reservation():

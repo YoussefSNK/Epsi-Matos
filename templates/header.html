@@ -3,7 +3,9 @@
 
 <div id="header-container">
     <div id="header-elements">
-        <img id="icon" src="{{ url_for('static', filename='assets/epsi-logo.png') }}" alt="EPSI logo">
+        <a href="/">
+            <img id="icon" src="{{ url_for('static', filename='assets/epsi-logo.png') }}" alt="EPSI logo">
+        </a>
         <p id="header-title">EPSI MATOS</p>
         <div class="buttons">
             <button id="logout-btn" onclick="location.href='/sign_out'">Déconnexion</button>

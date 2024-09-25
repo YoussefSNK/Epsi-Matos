@@ -51,6 +51,19 @@ def deconnexion_utilisateur():
     session['user_id'] = "" 
     return redirect('/')
   
+@app.route('/dashboard')
+def dashboard():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('dashboard.html')
+    else:
+        return redirect('/')
+    
+@app.route('/report', methods=['GET'])
+def formulaire_signalement():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('report.html')
+    else:
+        return redirect('/')
 
 def verify_credentials(username, password):
     conn = sqlite3.connect('database/database.db')

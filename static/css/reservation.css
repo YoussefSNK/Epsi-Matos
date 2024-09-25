@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.back-button {
+    position: absolute; /* Positionne le bouton de manière absolue */
+    top: 20px; /* Ajuste la distance du haut */
+    left: 20px; /* Ajuste la distance de la gauche */
+    font-size: 50px; /* Taille de la flèche */
+    color: black; /* Couleur de la flèche */
+    text-decoration: none; /* Supprime le soulignement */
+    background: none; /* Pas de fond */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur en forme de main au survol */
+}
+
+.back-button:hover {
+    color: #4b4e4f; /* Couleur au survol */
+}
+
+.container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centre les sections horizontalement */
+    height: 85vh; /* Prend toute la hauteur de la page */
+}
+
+.section {
+    width: 40%; /* Ajuste la largeur des sections */
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.section-right {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header-title {
+    font-size: 35px;
+    text-align: left; /* Aligne le texte à gauche */
+    color: black; /* Couleur personnalisée */
+    margin-bottom: 20px; /* Espacement en bas */
+    width: 100%; /* Pour s'assurer que le texte prend toute la largeur */
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Prend toute la largeur disponible */
+    margin: 30px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #935B9E; /* Violet */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-right: 10px;
+    padding: 1px;
+}
+
+.row-text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.row button {
+    font-size: 30px;
+    padding: 8px 12px;
+    background-color: #37B7D5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.row .button_unavailable {
+    font-size: 30px;
+    padding: 8px 12px;
+    background-color: #C6C6C6;
+    color: #767676;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.row button:hover {
+    background-color: #0D839F;
+}
+
+.row .button_unavailable {
+    font-size: 30px;
+    padding: 8px 12px;
+    background-color: #C6C6C6;
+    color: #767676;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.row .button_unavailable:hover {
+    background-color: #C6C6C6;
+}
+
+/* Centrer le séparateur entre les sections */
+.separator {
+    width: 3px;
+    background-color: #935B9E;
+    height: 80%; /* La hauteur du séparateur */
+    margin: 0 20px; /* Ajouter de l'espace des deux côtés du séparateur */
+}
+

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Reservation</title>
     <link rel="stylesheet" href="static/css/reservation.css" />
     <link rel="stylesheet" href="static/css/calendrier.css" />
     <script src="static/js/reservation.js"></script>
@@ -14,6 +14,7 @@
     />
   </head>
   <body>
+    {% include 'header.html' %}
     <a href="/" class="back-button">&#8592;</a>
     <!-- Flèche de retour -->
     <div class="container">
@@ -122,6 +123,9 @@
         </div>
       </div>
     </div>
+    <footer>
+      {% include 'footer.html' %}
+  </footer>
     <script src="static/js/calendrier.js"></script>
   </body>
 </html>

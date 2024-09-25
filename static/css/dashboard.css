@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.dash {
+    margin: 0;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 10px;
+    text-align: left; /* Aligne le titre à gauche */
+    padding: 10px; /* Ajoute un peu de rembourrage */
+}
+
+
+.btn-group {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 20px;
+}
+
+
+#sig:hover{
+    box-shadow: 15px 15px var(--yellow); /* Ombre jaune */
+}
+
+#res:hover {
+    box-shadow: 15px 15px var(--blue);}
+
+#sug:hover{
+    box-shadow: 15px 15px var(--pink); /* Ombre jaune plus prononcée au survol */
+}
+#sto:hover{
+    box-shadow: 15px 15px var(--orange); /* Ombre jaune plus prononcée au survol */
+}
+
+#sig {
+    box-shadow: 10px 10px var(--yellow); /* Ombre jaune */
+}
+
+#res {
+    box-shadow: 10px 10px var(--dark-grey);}
+
+#sug{
+    box-shadow: 10px 10px var(--dark-grey); /* Ombre jaune plus prononcée au survol */
+}
+#sto{
+    box-shadow: 10px 10px var(--dark-grey); /* Ombre jaune plus prononcée au survol */
+}
+
+
+
+
+.allTicket{
+    display: flex;
+    flex-direction: column;
+}
+.twoTicket{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.ticket{
+    width: 30%;
+    margin: 20px;
+    padding: 0 10px 0 10px;
+    border-radius: 15px;
+    border: 1px black solid;
+}
+.ticket-header{
+    gap: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.status-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #28a745; /* Couleur par défaut : vert (Traité) */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.status-btn .arrow {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.status-btn:hover {
+    background-color: #218838;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#footer-container {
+    position: absolute;
+    bottom: 0;
+}

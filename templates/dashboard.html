@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/css/theme.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1 class="dash">Dashboard</h1>
+
+        <div class="btn-group">
+            <button class="custom-container" id="sig">Signalement</button>
+            <button class="custom-container" id="res">Réservation</button>
+            <button class="custom-container" id="sug">Suggestion</button>
+            <button class="custom-container" id="sto">Gestion stock</button>
+        </div>
+
+    <div class="allTicket">
+        <div class="twoTicket">
+            <div class="ticket">
+                <div class="ticket-header">
+                    <span class="ticket-id">Ticket#333</span>
+                    <span class="ticket-date">Créée le 02/10/2024</span>
+                    <div class="dropdown">
+                        <button id="statusButton" class="status-btn">
+                            Traité 
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div id="dropdownMenu" class="dropdown-content">
+                            <a href="#" data-status="a-traite">À Traiter</a>
+                            <a href="#" data-status="en-cours">En Cours</a>
+                            <a href="#" data-status="traite">Traité</a>
+                        </div>
+                    </div>
+                </div>
+                <div><p>Salle 105</p></div>
+                <div><p>Matériel concerné : <strong> Prise</strong></p></div>
+                <div><p>Description du problème : La prise dans le coin droit sort du socle.</p></div>
+            </div>
+        
+            <div class="ticket">
+                <div class="ticket-header">
+                    <span class="ticket-id">Ticket#999</span>
+                    <span class="ticket-date">Créée le 12/08/2024</span>
+                    <div class="dropdown">
+                        <button id="statusButton" class="status-btn">
+                            Traité 
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div id="dropdownMenu" class="dropdown-content">
+                            <a href="#" data-status="a-traite">À Traiter</a>
+                            <a href="#" data-status="en-cours">En Cours</a>
+                            <a href="#" data-status="traite">Traité</a>
+                        </div>
+                    </div>
+                </div>
+                <div><p>Salle 586</p></div>
+                <div><p>Matériel concerné : <strong> Ecran</strong></p></div>
+                <div><p> <em>Aucune description</em></p></div>
+            </div>
+        </div>
+
+        <div class="twoTicket">
+            <div class="ticket">
+                <div class="ticket-header">
+                    <span class="ticket-id">Ticket#333</span>
+                    <span class="ticket-date">Créée le 02/10/2024</span>
+                    <div class="dropdown">
+                        <button id="statusButton" class="status-btn">
+                            Traité 
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div id="dropdownMenu" class="dropdown-content">
+                            <a href="#" data-status="a-traite">À Traiter</a>
+                            <a href="#" data-status="en-cours">En Cours</a>
+                            <a href="#" data-status="traite">Traité</a>
+                        </div>
+                    </div>
+                </div>
+                <div><p>Salle 105</p></div>
+                <div><p>Matériel concerné : <strong> Prise</strong></p></div>
+                <div><p>Description du problème : La prise dans le coin droit sort du socle.</p></div>
+            </div>
+        
+            <div class="ticket">
+                <div class="ticket-header">
+                    <span class="ticket-id">Ticket#999</span>
+                    <span class="ticket-date">Créée le 12/08/2024</span>
+                    <div class="dropdown">
+                        <button id="statusButton" class="status-btn">
+                            Traité 
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div id="dropdownMenu" class="dropdown-content">
+                            <a href="#" data-status="a-traite">À Traiter</a>
+                            <a href="#" data-status="en-cours">En Cours</a>
+                            <a href="#" data-status="traite">Traité</a>
+                        </div>
+                    </div>
+                </div>
+                <div><p>Salle 586</p></div>
+                <div><p>Matériel concerné : <strong> Ecran</strong></p></div>
+                <div><p> <em>Aucune description</em></p></div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="../static/js/dashboard.js"></script>
+<footer>
+        {% include 'footer.html' %}
+</footer>
+</body>
+
+</html>

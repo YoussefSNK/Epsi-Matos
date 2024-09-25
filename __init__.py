@@ -133,5 +133,12 @@ def reserve_materials():
         return redirect('/')
 
 
+@app.route('/dashboard')
+def dashboard():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('dashboard.html')
+    else:
+        return redirect('/')
+
 if __name__ == '__main__':
     app.run(debug=True)

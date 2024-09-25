@@ -18,6 +18,7 @@
 
   <body>
     {% include 'header.html' %}
+    <div class="page-title">ACCUEIL</div>
     <div id="home-container">
       <div id="left-section">
         <div id="left-items-container">
@@ -32,7 +33,7 @@
             <div id="report" data-room="{{ row[1].lower() }}">
               <div id="report-first-row">
                 Salle : {{ row[1] }}
-                <div id="status-color"></div>
+                <div id="status-color" class="{{ row[3] }}"></div>
               </div>
               <div>Matériel concerné : {{ row[0] }}</div>
               <div>Description : {{ row[2] }}</div>
@@ -48,7 +49,7 @@
             Signaler du matériel défaillant
           </div>
         </a>
-        <a href="/booking">
+        <a href="/reservation">
           <div class="custom-container" id="bookings-bloc">
             Réserver du matériel
           </div>

@@ -1,21 +1,19 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
 .custom-container {
     width: 60vw;
-    height: 80vh;
+    height: 90vh;
     border-radius: 15px;
     display: flex;
     background-color: white;
     flex-direction: column; 
     justify-content: flex-start; 
     align-items: center; 
+    margin: 50px auto;
 }
 
 .custom-container h1 {
@@ -58,7 +56,7 @@ body {
 }
 
 textarea.input-field {
-    resize: vertical; 
+    resize: none; 
     height: 100px; 
 }
 

@@ -1,0 +1,23 @@
+<!-- templates/material_availability.html -->
+{% if available_materials %}
+<table class="table table-striped">
+  <tbody>
+    {% for materiel in available_materials %}
+    <div class="row">
+      <div class="circle">{{ materiel[1] }}</div>
+      <div class="row-text">{{ materiel[0] }}</div>
+
+      {% if materiel[1] > 0 %}
+      <!-- Si le stock est supérieur à 0, afficher le bouton "Je réserve" -->
+      <button onclick="changeColor(this)">Je réserve</button>
+      {% else %}
+      <!-- Si le stock est inférieur à 1, afficher "Indisponible" -->
+      <button class="button_unavailable" disabled>Indisponible</button>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="alert alert-info">Aucun matériel disponible pour cette date.</p>
+{% endif %}

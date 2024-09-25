@@ -60,6 +60,11 @@
     align-items: center;
     height: 70vh;
     width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-color: var(--deep-purple) var(--grey);
+    scrollbar-width: thin;
+    padding-bottom: 20px;
 }
 
 #report {

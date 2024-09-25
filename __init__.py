@@ -10,6 +10,19 @@ def est_authentifie():
     return session.get('authentifie')
 
 
+@app.route('/')
+def ReadBDD():
+    if 'authentifie' in session and session['authentifie']:
+        conn = sqlite3.connect('database/database.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT titre, salle, description, etat FROM signalement')
+        data = cursor.fetchall()
+        conn.close()
+
+        return render_template('home.html', data=data)
+    else:
+        return redirect('/sign_in')
+
 @app.route('/sign_up', methods=['GET'])
 def formulaire_client():
     return render_template('signup.html')
@@ -51,6 +64,19 @@ def deconnexion_utilisateur():
     session['user_id'] = "" 
     return redirect('/')
   
+@app.route('/dashboard')
+def dashboard():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('dashboard.html')
+    else:
+        return redirect('/')
+    
+@app.route('/report', methods=['GET'])
+def formulaire_signalement():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('report.html')
+    else:
+        return redirect('/')
 
 def verify_credentials(username, password):
     conn = sqlite3.connect('database/database.db')
@@ -59,21 +85,6 @@ def verify_credentials(username, password):
     user = cursor.fetchone()
     conn.close()
     return user
-
-
-
-@app.route('/')
-def ReadBDD():
-    if 'authentifie' in session and session['authentifie']:
-        conn = sqlite3.connect('database/database.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT titre, salle, description, etat FROM signalement')
-        data = cursor.fetchall()
-        conn.close()
-
-        return render_template('home.html', data=data)
-    else:
-        return redirect('/sign_in')
 
 @app.route('/reservation')
 def reservation():
@@ -129,14 +140,6 @@ def reserve_materials():
 
         # Rendre une partie HTML à injecter dans la page via AJAX
         return render_template('material_availability.html', available_materials=available_materials)
-    else:
-        return redirect('/')
-
-
-@app.route('/report', methods=['GET'])
-def formulaire_signalement():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('report.html')
     else:
         return redirect('/')
     

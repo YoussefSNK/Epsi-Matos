@@ -9,9 +9,6 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions
 def est_authentifie():
     return session.get('authentifie')
 
-
-
-
 @app.route('/sign_up', methods=['GET'])
 def formulaire_client():
     return render_template('signup.html')
@@ -53,7 +50,6 @@ def deconnexion_utilisateur():
     session['user_id'] = "" 
     return redirect('/')
   
-
 def verify_credentials(username, password):
     conn = sqlite3.connect('database/database.db')
     cursor = conn.cursor()
@@ -71,8 +67,7 @@ def add_suggestion(title, quantity, description):
     conn.close()
     return result
 
-
-
+# Route de l'accueil, qui redirige vers la page de connexion si on est pas connecté, et qui affiche l'accueil avec les derniers tickets ouverts sinon
 @app.route('/')
 def ReadBDD():
     if 'authentifie' in session and session['authentifie']:
@@ -86,17 +81,13 @@ def ReadBDD():
     else:
         return redirect('/sign_in')
 
+# Route de la page du calendrier, qui affiche le matériel disponible aujourd'hui
 @app.route('/reservation')
 def reservation():
     if 'authentifie' in session and session['authentifie']:
-        # Connexion à la base de données
         conn = sqlite3.connect('database/database.db')
         cursor = conn.cursor()
-
-        # Récupérer la date d'aujourd'hui
         today = datetime.now().strftime('%Y-%m-%d')
-
-        # Requête SQL pour obtenir les matériels disponibles à la date d'aujourd'hui
         query = '''
         SELECT m.nom, m.stock - IFNULL(COUNT(r.id_materiel), 0) AS disponible
         FROM materiel m
@@ -104,28 +95,22 @@ def reservation():
         AND r.date_emprunt = ?
         GROUP BY m.id
         '''
-
         cursor.execute(query, (today,))
         available_materials = cursor.fetchall()
         conn.close()
 
-        # Passer les matériels disponibles au template
         return render_template('reservation.html', available_materials=available_materials)
     else:
         return redirect('/')
 
-    
+# Route de la page du calendrier, qui affiche le matériel disponible le jour selectionné
 @app.route('/reserve_materials')
 def reserve_materials():
     if 'authentifie' in session and session['authentifie']:
-        # Récupérer la date passée via AJAX ou utiliser la date du jour par défaut
+        # la date passée via AJAX 
         selected_date = request.args.get('date', datetime.now().strftime('%Y-%m-%d'))
-
-        # Connexion à la base de données
         conn = sqlite3.connect('database/database.db')
         cursor = conn.cursor()
-
-        # Requête SQL pour obtenir les matériels disponibles à la date donnée
         query = '''
         SELECT m.nom, m.stock - IFNULL(COUNT(r.id_materiel), 0) AS disponible
         FROM materiel m
@@ -133,12 +118,9 @@ def reserve_materials():
         AND r.date_emprunt = ?
         GROUP BY m.id
         '''
-
         cursor.execute(query, (selected_date,))
         available_materials = cursor.fetchall()
         conn.close()
-
-        # Rendre une partie HTML à injecter dans la page via AJAX
         return render_template('material_availability.html', available_materials=available_materials)
     else:
         return redirect('/')
@@ -149,7 +131,7 @@ def formulaire_signalement():
         return render_template('report.html')
     else:
         return redirect('/')
-    
+
 @app.route('/booking', methods=['GET'])
 def formulaire_reservation():
     if 'authentifie' in session and session['authentifie']:

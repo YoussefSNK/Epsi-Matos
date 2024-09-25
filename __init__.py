@@ -51,21 +51,7 @@ def deconnexion_utilisateur():
     session['user_id'] = "" 
     return redirect('/')
   
-@app.route('/dashboard')
-def dashboard():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('dashboard.html')
-    else:
-        return redirect('/')
-    
-@app.route('/report', methods=['GET'])
-def formulaire_signalement():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('report.html')
-    else:
-        return redirect('/')
 
-  
 def verify_credentials(username, password):
     conn = sqlite3.connect('database/database.db')
     cursor = conn.cursor()
@@ -93,9 +79,12 @@ def ReadBDD():
         data = cursor.fetchall()
         conn.close()
 
-        return render_template('read_data.html', data=data)
+        return render_template('home.html', data=data)
     else:
         return redirect('/sign_in')
+
+
+# ----------------------------- RESERVATION -----------------------------
 
 # Route de la page du calendrier, qui affiche le matériel disponible aujourd'hui
 @app.route('/reservation')
@@ -119,7 +108,7 @@ def reservation():
     else:
         return redirect('/')
 
-# Route de la page du calendrier, qui affiche le matériel disponible le jour selectionné
+# Route du composant page calendrier, qui affiche le matériel disponible le jour selectionné
 @app.route('/reserve_materials')
 def reserve_materials():
     if 'authentifie' in session and session['authentifie']:
@@ -141,6 +130,8 @@ def reserve_materials():
     else:
         return redirect('/')
 
+# ----------------------------- SIGNALEMENT -----------------------------
+# Route de la page du signalement
 @app.route('/report', methods=['GET'])
 def formulaire_signalement():
     if 'authentifie' in session and session['authentifie']:
@@ -148,12 +139,26 @@ def formulaire_signalement():
     else:
         return redirect('/')
 
-@app.route('/booking', methods=['GET'])
-def formulaire_reservation():
+# ----------------------------- SUGGESTION -----------------------------
+# Route de la page de suggestion
+@app.route('/suggestion', methods=['GET'])
+def formulaire_suggestion():
     if 'authentifie' in session and session['authentifie']:
-        return render_template('bookings.html')
+        return render_template('suggestions.html')
     else:
         return redirect('/')
+
+# ----------------------------- DASHBOARD -----------------------------
+@app.route('/dashboard')
+def dashboard():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('dashboard.html')
+    else:
+        return redirect('/')
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

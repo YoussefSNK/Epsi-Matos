@@ -9,20 +9,6 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions
 def est_authentifie():
     return session.get('authentifie')
 
-
-@app.route('/')
-def ReadBDD():
-    if 'authentifie' in session and session['authentifie']:
-        conn = sqlite3.connect('database/database.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT titre, salle, description, etat FROM signalement')
-        data = cursor.fetchall()
-        conn.close()
-
-        return render_template('home.html', data=data)
-    else:
-        return redirect('/sign_in')
-
 @app.route('/sign_up', methods=['GET'])
 def formulaire_client():
     return render_template('signup.html')
@@ -63,20 +49,6 @@ def deconnexion_utilisateur():
     session['authentifie'] = False
     session['user_id'] = "" 
     return redirect('/')
-  
-@app.route('/dashboard')
-def dashboard():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('dashboard.html')
-    else:
-        return redirect('/')
-    
-@app.route('/report', methods=['GET'])
-def formulaire_signalement():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('report.html')
-    else:
-        return redirect('/')
 
 def verify_credentials(username, password):
     conn = sqlite3.connect('database/database.db')
@@ -109,6 +81,9 @@ def ReadBDD():
     else:
         return redirect('/sign_in')
 
+
+# ----------------------------- RESERVATION -----------------------------
+
 # Route de la page du calendrier, qui affiche le matériel disponible aujourd'hui
 @app.route('/reservation')
 def reservation():
@@ -116,8 +91,22 @@ def reservation():
         conn = sqlite3.connect('database/database.db')
         cursor = conn.cursor()
         today = datetime.now().strftime('%Y-%m-%d')
+        query = '''
+        SELECT m.nom, m.stock - IFNULL(COUNT(r.id_materiel), 0) AS disponible
+        FROM materiel m
+        LEFT JOIN reservation r ON m.id = r.id_materiel
+        AND r.date_emprunt = ?
+        GROUP BY m.id
+        '''
+        cursor.execute(query, (today,))
+        available_materials = cursor.fetchall()
+        conn.close()
 
-# Route de la page du calendrier, qui affiche le matériel disponible le jour selectionné
+        return render_template('reservation.html', available_materials=available_materials)
+    else:
+        return redirect('/')
+
+# Route du composant page calendrier, qui affiche le matériel disponible le jour selectionné
 @app.route('/reserve_materials')
 def reserve_materials():
     if 'authentifie' in session and session['authentifie']:
@@ -139,6 +128,8 @@ def reserve_materials():
     else:
         return redirect('/')
 
+# ----------------------------- SIGNALEMENT -----------------------------
+# Route de la page du signalement
 @app.route('/report', methods=['GET'])
 def formulaire_signalement():
     if 'authentifie' in session and session['authentifie']:
@@ -146,41 +137,22 @@ def formulaire_signalement():
     else:
         return redirect('/')
 
-@app.route('/booking', methods=['GET'])
-def formulaire_reservation():
+# ----------------------------- SUGGESTION -----------------------------
+# Route de la page de suggestion
+@app.route('/suggestion', methods=['GET'])
+def formulaire_suggestion():
     if 'authentifie' in session and session['authentifie']:
-        return render_template('reservation.html')
+        return render_template('suggestions.html')
     else:
         return redirect('/')
 
-
-
-@app.route('/suggestion', methods=['POST'])
-def upload_suggestion():
-    nom_materiel = request.form['nom_materiel']
-    nombre_materiel = request.form['nombre_materiel']
-    description_materiel = request.form['description_materiel']
-    conn = sqlite3.connect('database/database.db')
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO suggestion (titre, quantite, description) VALUES (?,?,?);', (nom_materiel, nombre_materiel, description_materiel))
-    conn.commit()
-    cursor.close
-    conn.close()
-    return redirect('/')
-
-@app.route('/suggestion', methods=['GET'])
-def read_bdd_sugg():
+# ----------------------------- DASHBOARD -----------------------------
+@app.route('/dashboard')
+def dashboard():
     if 'authentifie' in session and session['authentifie']:
-        conn = sqlite3.connect('database/database.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT titre, quantite, description FROM suggestion')
-        data = cursor.fetchall()
-        print(data)
-        conn.close()
-
-        return render_template('suggestions.html', data=data)
+        return render_template('dashboard.html')
     else:
-        return redirect('/sign_in')
+        return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

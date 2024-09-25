@@ -25,11 +25,10 @@ CREATE TABLE materiel(
 
 DROP TABLE IF EXISTS suggestion;
 CREATE TABLE suggestion(
-   id INT,
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
    titre VARCHAR(50) NOT NULL,
    quantite INT NOT NULL,
-   description VARCHAR(180),
-   PRIMARY KEY(id)
+   description VARCHAR(180)
 );
 
 DROP TABLE IF EXISTS jaime;
@@ -52,6 +51,7 @@ CREATE TABLE reservation(
     FOREIGN KEY (id_user) REFERENCES user(id),
     FOREIGN KEY (id_materiel) REFERENCES materiel(id)
 );DROP TABLE IF EXISTS reservation;
+
 CREATE TABLE reservation(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     date_emprunt TEXT NOT NULL,

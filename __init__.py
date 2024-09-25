@@ -77,7 +77,7 @@ def ReadBDD():
         data = cursor.fetchall()
         conn.close()
 
-        return render_template('read_data.html', data=data)
+        return render_template('home.html', data=data)
     else:
         return redirect('/sign_in')
 
@@ -135,9 +135,38 @@ def formulaire_signalement():
 @app.route('/booking', methods=['GET'])
 def formulaire_reservation():
     if 'authentifie' in session and session['authentifie']:
-        return render_template('bookings.html')
+        return render_template('reservation.html')
     else:
         return redirect('/')
+
+
+
+@app.route('/suggestion', methods=['POST'])
+def upload_suggestion():
+    nom_materiel = request.form['nom_materiel']
+    nombre_materiel = request.form['nombre_materiel']
+    description_materiel = request.form['description_materiel']
+    conn = sqlite3.connect('database/database.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO suggestion (titre, quantite, description) VALUES (?,?,?);', (nom_materiel, nombre_materiel, description_materiel))
+    conn.commit()
+    cursor.close
+    conn.close()
+    return redirect('/')
+
+@app.route('/suggestion', methods=['GET'])
+def read_bdd_sugg():
+    if 'authentifie' in session and session['authentifie']:
+        conn = sqlite3.connect('database/database.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT titre, quantite, description FROM suggestion')
+        data = cursor.fetchall()
+        print(data)
+        conn.close()
+
+        return render_template('suggestions.html', data=data)
+    else:
+        return redirect('/sign_in')
 
 if __name__ == '__main__':
     app.run(debug=True)

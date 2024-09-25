@@ -21,7 +21,8 @@
   }
 
 body {
-  background-color: var(--white)
+  background-color: var(--white);
+  height: 95vh;
 }
 
 a {
@@ -38,8 +39,7 @@ a {
   text-align: center;
   align-content: center;
   padding: 20px;
-  box-shadow: 
-  10px 10px var(--yellow);
+  box-shadow: 10px 10px var(--yellow);
   transition: ease-in-out 0.3s;
 }
 

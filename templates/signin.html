@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/forms.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <title>Authentification</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div id="header-container">
+        <div id="header-elements">
+            <img id="icon" src="{{ url_for('static', filename='assets/epsi-logo.png') }}" alt="EPSI logo">
+            <p id="header-title">EPSI MATOS</p>
+            <div class="buttons">
+                <button id="logout-btn" onclick="location.href='/sign_up'">Inscription</button>
+            </div>
+        </div>
+    </div>
+    <form
+      class="custom-container"
+      action="{{ url_for('authentification') }}"
+      method="post"
+    >
+      <h2>Connexion</h2>
+      {% if error %}
+      <p>Identifiant ou mot de passe incorrect.</p>
+      {% endif %}
+      <label for="login">Identifiant :</label>
+      <input type="login" id="login" name="login" />
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="password" />
+      <input type="submit" value="Se connecter" />
 
-
-    <form action="{{ url_for('authentification') }}" method="post">
-        <h2>Authentification</h2>
-        {% if error %}
-            <p style="color: red;">Identifiant ou mot de passe incorrect.</p>
-        {% endif %}
-        <label for="login">Identifiant:</label><br>
-        <input type="login" id="login" name="login"><br>
-        <label for="password">Mot de passe:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" value="Se connecter">
+      <p class="no-account">
+        Vous n'avez pas de compte ?
+        <a href="{{ url_for('formulaire_client') }}">Inscrivez-vous</a>
+      </p>
     </form>
-    <form action="{{ url_for('formulaire_client') }}">
-        <input type="submit" value="S'inscrire" />
-    </form>
-</body>
+  </body>
+  <footer>{% include 'footer.html' %}</footer>
 </html>

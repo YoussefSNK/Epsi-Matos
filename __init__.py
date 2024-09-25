@@ -50,6 +50,7 @@ def deconnexion_utilisateur():
     session['authentifie'] = False
     session['user_id'] = "" 
     return redirect('/')
+
   
 
 def verify_credentials(username, password):
@@ -109,6 +110,7 @@ def reservation():
         return redirect('/')
 
 # Route du composant page calendrier, qui affiche le matériel disponible le jour selectionné
+# Route du composant page calendrier, qui affiche le matériel disponible le jour selectionné
 @app.route('/reserve_materials')
 def reserve_materials():
     if 'authentifie' in session and session['authentifie']:
@@ -132,6 +134,8 @@ def reserve_materials():
 
 # ----------------------------- SIGNALEMENT -----------------------------
 # Route de la page du signalement
+# ----------------------------- SIGNALEMENT -----------------------------
+# Route de la page du signalement
 @app.route('/report', methods=['GET'])
 def formulaire_signalement():
     if 'authentifie' in session and session['authentifie']:
@@ -151,14 +155,24 @@ def formulaire_suggestion():
 # ----------------------------- DASHBOARD -----------------------------
 @app.route('/dashboard')
 def dashboard():
+# ----------------------------- SUGGESTION -----------------------------
+# Route de la page de suggestion
+@app.route('/suggestion', methods=['GET'])
+def formulaire_suggestion():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('suggestions.html')
+    else:
+        return redirect('/')
+
+# ----------------------------- DASHBOARD -----------------------------
+@app.route('/dashboard')
+def dashboard():
     if 'authentifie' in session and session['authentifie']:
         return render_template('dashboard.html')
     else:
         return redirect('/')
-
-
-
-
+=========
+>>>>>>>>> Temporary merge branch 2
 
 if __name__ == '__main__':
     app.run(debug=True)

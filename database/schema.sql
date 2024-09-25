@@ -25,11 +25,10 @@ CREATE TABLE materiel(
 
 DROP TABLE IF EXISTS suggestion;
 CREATE TABLE suggestion(
-   id INT,
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
    titre VARCHAR(50) NOT NULL,
    quantite INT NOT NULL,
-   description VARCHAR(180),
-   PRIMARY KEY(id)
+   description VARCHAR(180)
 );
 
 DROP TABLE IF EXISTS jaime;

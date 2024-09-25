@@ -39,13 +39,16 @@ body{
     align-items: center;
 }
 .header-title {
-    font-size: 35px;
+    font-size: 30px;
     text-align: left; /* Aligne le texte à gauche */
     color: black; /* Couleur personnalisée */
     margin-bottom: 20px; /* Espacement en bas */
     width: 100%; /* Pour s'assurer que le texte prend toute la largeur */
 }
 
+.title-return{
+    align-items: center;
+}
 
 .row {
     display: flex;
@@ -72,10 +75,11 @@ body{
 .row-text {
     flex-grow: 1;
     text-align: left;
+    font-size: 20px;
 }
 
 .row button {
-    font-size: 30px;
+    font-size: 25px;
     padding: 8px 12px;
     background-color: #37B7D5;
     color: white;
@@ -85,7 +89,7 @@ body{
 }
 
 .row .button_unavailable {
-    font-size: 30px;
+    font-size: 25px;
     padding: 8px 12px;
     background-color: #C6C6C6;
     color: #767676;
@@ -96,16 +100,6 @@ body{
 
 .row button:hover {
     background-color: #0D839F;
-}
-
-.row .button_unavailable {
-    font-size: 30px;
-    padding: 8px 12px;
-    background-color: #C6C6C6;
-    color: #767676;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
 }
 
 .row .button_unavailable:hover {
@@ -120,3 +114,7 @@ body{
     margin: 0 20px; /* Ajouter de l'espace des deux côtés du séparateur */
 }
 
+#footer-container {
+    position: relative;
+    bottom: 0;
+}

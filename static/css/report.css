@@ -79,3 +79,8 @@ textarea.input-field {
 .submit-button:hover {
     background-color: var(--deep-purple); 
 }
+
+#footer-container {
+    position: relative;
+    bottom: 0;
+}

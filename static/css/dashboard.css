@@ -13,13 +13,15 @@ body {
     text-align: left; /* Aligne le titre à gauche */
     padding: 10px; /* Ajoute un peu de rembourrage */
 }
-
+.custom-container{
+    width: 300px;
+}
 
 .btn-group {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    margin: 20px;
+    margin: 30px;
 }
 
 
@@ -57,6 +59,7 @@ body {
 .allTicket{
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 }
 .twoTicket{
     display: flex;
@@ -126,6 +129,18 @@ body {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.red {
+    background-color: #dc3545; /* Rouge pour "À Traiter" */
+}
+
+.orange {
+    background-color: #fd7e14; /* Orange pour "En Cours" */
+}
+
+.green {
+    background-color: #28a745; /* Vert pour "Traité" */
 }
 
 #footer-container {

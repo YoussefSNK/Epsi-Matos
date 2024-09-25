@@ -10,6 +10,8 @@ def est_authentifie():
     return session.get('authentifie')
 
 
+
+
 @app.route('/sign_up', methods=['GET'])
 def formulaire_client():
     return render_template('signup.html')
@@ -59,6 +61,15 @@ def verify_credentials(username, password):
     user = cursor.fetchone()
     conn.close()
     return user
+
+def add_suggestion(title, quantity, description):
+    conn = sqlite3.connect('database/database.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO suggestions (titre, quantite, description) VALUES (?,?,?)', (title, quantity, description))
+    result = cursor.fetchone()
+    print(result)
+    conn.close()
+    return result
 
 
 
@@ -132,6 +143,19 @@ def reserve_materials():
     else:
         return redirect('/')
 
+@app.route('/report', methods=['GET'])
+def formulaire_signalement():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('report.html')
+    else:
+        return redirect('/')
+    
+@app.route('/booking', methods=['GET'])
+def formulaire_reservation():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('bookings.html')
+    else:
+        return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

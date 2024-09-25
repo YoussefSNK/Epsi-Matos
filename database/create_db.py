@@ -13,6 +13,13 @@ cur.execute("INSERT INTO user (login, password) VALUES (?, ?)",('hanen', 'G_R!xj
 cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Problème de problème', 'BJ99', 'Il y a un piège devant la porte', "a-traiter", "1"))
 cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Prise', 'BJ12', 'Les prises sont en feu', "ferme", "1"))
 cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Prise', 'BJ12', '', "en-cours", "1"))
+cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Serveurs', 'MyDIL', 'Les serveurs sont en panne', 'en-cours', '1'))
+cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Serveurs', 'MyDIL', 'Trop de bruit !', 'en-cours', '1'))
+cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Chaise', 'B301', '5 chaises cassées (dangereux)', 'en-cours', '1'))
+cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Projecteur', 'B301', 'Marche une fois sur cinq', 'en-cours', '1'))
+cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Enceintes', 'B200', 'Pas de son', 'en-cours', '1'))
+cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Clime', 'B006', 'Pas de clime, horrible', 'en-cours', '1'))
+cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Radio', 'MyDIL', 'Cassée', 'en-cours', '1'))
 
 cur.execute("INSERT INTO materiel (nom, stock) VALUES (?, ?)",('Bras Robot', '3'))
 cur.execute("INSERT INTO materiel (nom, stock) VALUES (?, ?)",('Lampe Terrible', '1'))

@@ -70,6 +70,7 @@ main {
 .input {
     background-color: rgb(236, 236, 236);
     border-radius: 25px;
+    font-size: 18px;
     height: 47px;
     border: none;
     padding-left: 20px;
@@ -77,6 +78,7 @@ main {
 
 textarea {
     height: 131px;
+    font-size: 18px;
     resize: none;
     background-color: rgb(236, 236, 236);
     border-radius: 25px;
@@ -89,15 +91,18 @@ textarea {
     width: 168px;
     height: 45px;
     border-radius: 25px;
+    font-size: 22px;
     border-style: none;
     background-color: #37B7D5;
     color: #FFF;
 }
 
 #bouton_form:hover {
-    transition: 0.3s;
+    transition: 0.2s;
     background-color: #FFF;
     color: #37B7D5;
-    border: solid 4px color #37B7D5;
+    border-style: solid;
+    border-color: #37B7D5;
+    border-width: 2px;
     cursor: pointer
 }

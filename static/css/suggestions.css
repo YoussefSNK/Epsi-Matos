@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+:root {
+    --deep-purple: #271549;
+    --blue: #37B7D5;
+    --yellow: #FAD053;
+    --orange: #FF6900;
+    --white: #EEEFF3;
+    --black: #000000;
+    --pink: #DA4759;
+    --light-purple: #BA33D4;
+}
+
+* {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#form_sugg {
+    display: flex;
+    flex-direction: column;
+    width: 586px;
+    height: 615px;
+    align-items: center;
+    border: 4px solid #000;
+    border-radius: 15px;
+    padding: 0px;
+    box-shadow: 15px 15px var(--yellow);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#titre {
+    font-size: 33px;
+    padding-bottom: 25px;
+}
+
+#formulaire_suggestion {
+    height: 350px;
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 25px;
+    justify-content: center;
+    width: 100%;
+    font-size: 22px;
+}
+
+.input_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    justify-content: space-between;
+}
+
+.input {
+    background-color: rgb(236, 236, 236);
+    border-radius: 25px;
+    font-size: 18px;
+    height: 47px;
+    border: none;
+    padding-left: 20px;
+}
+
+textarea {
+    height: 131px;
+    font-size: 18px;
+    resize: none;
+    background-color: rgb(236, 236, 236);
+    border-radius: 25px;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-style: none;
+}
+
+#bouton_form {
+    width: 168px;
+    height: 45px;
+    border-radius: 25px;
+    font-size: 22px;
+    border-style: none;
+    background-color: #37B7D5;
+    color: #FFF;
+}
+
+#bouton_form:hover {
+    transition: 0.2s;
+    background-color: #FFF;
+    color: #37B7D5;
+    border-style: solid;
+    border-color: #37B7D5;
+    border-width: 2px;
+    cursor: pointer
+}

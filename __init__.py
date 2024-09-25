@@ -63,6 +63,15 @@ def verify_credentials(username, password):
     conn.close()
     return user
 
+def add_suggestion(title, quantity, description):
+    conn = sqlite3.connect('database/database.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO suggestions (titre, quantite, description) VALUES (?,?,?)', (title, quantity, description))
+    result = cursor.fetchone()
+    print(result)
+    conn.close()
+    return result
+
 
 
 @app.route('/')

@@ -1,57 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
     <title>Accueil</title>
-</head>
+  </head>
 
-<body>
+  <body>
     {% include 'header.html' %}
     <div id="home-container">
-        <div id="left-section">
-            <div id="left-items-container">
-                <input class="searchbar" type="text" placeholder="⌕  Rechercher une salle">
-                <div id="list-reports">
-                    {% for row in data %}
-                    <div id="report">
-                        <div id="report-first-row">
-                            Salle : {{ row[1] }}
-                            <div id="status-color"></div>
-                        </div>
-                        <div>Matériel concerné : {{ row[0] }}</div>
-                        <div>Description : {{ row[2] }}</div>
-                    </div>
-                    {% endfor %}
-                </div>
+      <div id="left-section">
+        <div id="left-items-container">
+          <input
+            class="searchbar"
+            type="text"
+            placeholder="⌕  Rechercher une salle"
+            oninput="filterReports()"
+          />
+          <div id="list-reports">
+            {% for row in data %}
+            <div id="report" data-room="{{ row[1].lower() }}">
+              <div id="report-first-row">
+                Salle : {{ row[1] }}
+                <div id="status-color"></div>
+              </div>
+              <div>Matériel concerné : {{ row[0] }}</div>
+              <div>Description : {{ row[2] }}</div>
             </div>
+            {% endfor %}
+          </div>
         </div>
-        <div class="vertical-line"></div>
-        <div id="home-links">
-            <a href="/report">
-                <div class="custom-container" id="reports-bloc">
-                    Signaler du matériel défaillant
-                </div>
-            </a>
-            <a href="/booking">
-                <div class="custom-container" id="bookings-bloc">
-                    Réserver du matériel
-                </div>
-            </a>
-            <a href="/suggestion">
-                <div class="custom-container" id="suggestions-bloc">
-                    Suggestion de matériel
-                </div>
-            </a>
-        </div>
+      </div>
+      <div class="vertical-line"></div>
+      <div id="home-links">
+        <a href="/report">
+          <div class="custom-container" id="reports-bloc">
+            Signaler du matériel défaillant
+          </div>
+        </a>
+        <a href="/booking">
+          <div class="custom-container" id="bookings-bloc">
+            Réserver du matériel
+          </div>
+        </a>
+        <a href="/suggestion">
+          <div class="custom-container" id="suggestions-bloc">
+            Suggestion de matériel
+          </div>
+        </a>
+      </div>
     </div>
-</body>
-<footer>
-    {% include 'footer.html' %}
-</footer>
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
+  </body>
+  <footer>{% include 'footer.html' %}</footer>
+  <script src="{{ url_for('static', filename='js/filtrage_tickets.js') }}"></script>
 </html>

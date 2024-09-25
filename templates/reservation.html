@@ -15,7 +15,10 @@
   </head>
   <body>
     {% include 'header.html' %}
-    <a href="/" class="back-button">&#8592;</a>
+    <div class="title-return">
+      <a href="/" class="back-button">&#8592;</a>
+      <div class="page-title">RESERVATION</div>
+    </div>
     <!-- Flèche de retour -->
     <div class="container">
       <!-- Deuxième section (droite) maintenant à gauche -->
@@ -128,4 +131,7 @@
   </footer>
     <script src="static/js/calendrier.js"></script>
   </body>
+  <footer>
+    {% include 'footer.html' %}
+  </footer>
 </html>

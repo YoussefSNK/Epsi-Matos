@@ -8,9 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
     <title>Accueil</title>
 </head>
-{% include 'header.html' %}
 <body>
-
+    {% include 'header.html' %}
+    <div class="page-title">ACCUEIL</div>
     <div id="home-container">
         <div id="left-section">
             <div id="left-items-container">
@@ -36,7 +36,7 @@
                     Signaler du matériel défaillant
                 </div>
             </a>
-            <a href="/booking">
+            <a href="/reservation">
                 <div class="custom-container" id="bookings-bloc">
                     Réserver du matériel
                 </div>
@@ -52,6 +52,5 @@
 <footer>
     {% include 'footer.html' %}
 </footer>
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </html>

@@ -4,20 +4,16 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 .back-button {
-    position: relative; /* Positionne le bouton de manière absolue */
-    top: 0; /* Ajuste la distance du haut */
-    left: 20px; /* Ajuste la distance de la gauche */
-    font-size: 50px; /* Taille de la flèche */
-    color: black; /* Couleur de la flèche */
+    font-size: 30px; /* Taille de la flèche */
+    color: var(--black); /* Couleur de la flèche */
     text-decoration: none; /* Supprime le soulignement */
     background: none; /* Pas de fond */
     border: none; /* Pas de bordure */
-
 }
 
 .back-button:hover {
-    cursor: pointer; /* Curseur en forme de main au survol */
-    color: #4b4e4f; /* Couleur au survol */
+    color: #4b4e4f;
+    cursor: pointer;
 }
 
 .container {

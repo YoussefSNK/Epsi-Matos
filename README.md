@@ -32,7 +32,10 @@ Administrateur
   ???
 
 - Démarrer le serveur
-  python **init**.py
+
+```bash
+  python __init__.py
+```
 
 ## Utilisation
 

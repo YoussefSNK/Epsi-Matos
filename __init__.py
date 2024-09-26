@@ -155,7 +155,7 @@ def upload_suggestion():
 @app.route('/suggestion', methods=['GET'])
 def read_bdd_sugg():
     if 'authentifie' in session and session['authentifie']:
-        return render_template('dashboard.html')
+        return render_template('suggestions.html')
     else:
         return redirect('/')
 

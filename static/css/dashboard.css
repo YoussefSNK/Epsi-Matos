@@ -141,8 +141,3 @@ body {
 .green {
     background-color: #28a745; /* Vert pour "Traité" */
 }
-
-#footer-container {
-    position: absolute;
-    bottom: 0;
-}

@@ -5,7 +5,7 @@ body {
 }
 
 .custom-container {
-    width: 60vw;
+    width: 50vw;
     height: min-content;
     border-radius: 15px;
     display: flex;
@@ -76,9 +76,4 @@ textarea.input-field {
 
 .submit-button:hover {
     background-color: var(--deep-purple); 
-}
-
-#footer-container {
-    position: absolute;
-    bottom: 0;
 }

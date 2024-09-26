@@ -78,7 +78,6 @@
     transition: opacity 0.3s ease, height 0.3s ease, padding 0.3s ease;
     opacity: 1;
     height: auto;
-    overflow: hidden;
     }
 
 #report.hidden {

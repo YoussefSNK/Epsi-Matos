@@ -74,6 +74,19 @@
     padding: 10px;
     background-color: var(--white);
     margin-top: 20px;
+
+    transition: opacity 0.3s ease, height 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+    height: auto;
+    }
+
+#report.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    /* Réduit également le margin si besoin */
+    visibility: hidden;
 }
 
 #report-first-row {

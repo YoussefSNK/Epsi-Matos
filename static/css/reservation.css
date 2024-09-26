@@ -92,3 +92,22 @@ body{
     border-radius: 10px;
     transition: ease-in-out 0.2s;
 }
+
+#footer-container {
+    position: relative;
+    bottom: 0;
+}
+
+.popup-success {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Couleur verte pour le succès */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}

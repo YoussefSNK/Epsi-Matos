@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <header>
-    </header>
+    {% include 'header.html' %}
     <main>
         <div>
             <img src="">
@@ -21,7 +20,7 @@
             <form method="post" action="" id="formulaire_suggestion">
                 <div id="form">
                     <div class="input_form">
-                        <label for="nom_mat">Nom du matériel:</label>
+                        <label for="nom_mat">Nom du matériel :</label>
                         <input class="input" type="text" name="nom_materiel">
                     </div>
                     <div class="input_form">
@@ -40,7 +39,27 @@
             <p>Voir les autres suggestions</p>
             <img src="">
         </div>
+        <div id="les_autres_suggestions">
+
+            {% for row in data %}
+            <div id="suggestion">
+                <div id="description_suggestion">
+                    <p class="description">{{ row[0] }}</p>
+                    <p class="description">{{ row[1] }}</p>
+                    <p id="description">{{ row[2] }}</p>
+                </div>
+                <div id="like_suggestion">
+                    <img src="../static/assets/like-svgrepo-com.svg" height="80px" width="80px">
+                    <p style="margin:0px;">15</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
     </main>
 </body>
+<footer>
+    {% include 'footer.html' %}
+</footer>
 
 </html>

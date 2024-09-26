@@ -9,7 +9,6 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions
 def est_authentifie():
     return session.get('authentifie')
 
-
 @app.route('/sign_up', methods=['GET'])
 def formulaire_client():
     return render_template('signup.html')
@@ -51,20 +50,6 @@ def deconnexion_utilisateur():
     session['user_id'] = "" 
     return redirect('/')
   
-@app.route('/dashboard')
-def dashboard():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('dashboard.html')
-    else:
-        return redirect('/')
-    
-@app.route('/report', methods=['GET'])
-def formulaire_signalement():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('report.html')
-    else:
-        return redirect('/')
-
 def verify_credentials(username, password):
     conn = sqlite3.connect('database/database.db')
     cursor = conn.cursor()
@@ -73,8 +58,16 @@ def verify_credentials(username, password):
     conn.close()
     return user
 
+def add_suggestion(title, quantity, description):
+    conn = sqlite3.connect('database/database.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO suggestions (titre, quantite, description) VALUES (?,?,?)', (title, quantity, description))
+    result = cursor.fetchone()
+    print(result)
+    conn.close()
+    return result
 
-
+# Route de l'accueil, qui redirige vers la page de connexion si on est pas connecté, et qui affiche l'accueil avec les derniers tickets ouverts sinon
 @app.route('/')
 def ReadBDD():
     if 'authentifie' in session and session['authentifie']:
@@ -88,17 +81,13 @@ def ReadBDD():
     else:
         return redirect('/sign_in')
 
+# Route de la page du calendrier, qui affiche le matériel disponible aujourd'hui
 @app.route('/reservation')
 def reservation():
     if 'authentifie' in session and session['authentifie']:
-        # Connexion à la base de données
         conn = sqlite3.connect('database/database.db')
         cursor = conn.cursor()
-
-        # Récupérer la date d'aujourd'hui
         today = datetime.now().strftime('%Y-%m-%d')
-
-        # Requête SQL pour obtenir les matériels disponibles à la date d'aujourd'hui
         query = '''
         SELECT m.nom, m.stock - IFNULL(COUNT(r.id_materiel), 0) AS disponible
         FROM materiel m
@@ -106,28 +95,22 @@ def reservation():
         AND r.date_emprunt = ?
         GROUP BY m.id
         '''
-
         cursor.execute(query, (today,))
         available_materials = cursor.fetchall()
         conn.close()
 
-        # Passer les matériels disponibles au template
         return render_template('reservation.html', available_materials=available_materials)
     else:
         return redirect('/')
 
-    
+# Route de la page du calendrier, qui affiche le matériel disponible le jour selectionné
 @app.route('/reserve_materials')
 def reserve_materials():
     if 'authentifie' in session and session['authentifie']:
-        # Récupérer la date passée via AJAX ou utiliser la date du jour par défaut
+        # la date passée via AJAX 
         selected_date = request.args.get('date', datetime.now().strftime('%Y-%m-%d'))
-
-        # Connexion à la base de données
         conn = sqlite3.connect('database/database.db')
         cursor = conn.cursor()
-
-        # Requête SQL pour obtenir les matériels disponibles à la date donnée
         query = '''
         SELECT m.nom, m.stock - IFNULL(COUNT(r.id_materiel), 0) AS disponible
         FROM materiel m
@@ -135,18 +118,55 @@ def reserve_materials():
         AND r.date_emprunt = ?
         GROUP BY m.id
         '''
-
         cursor.execute(query, (selected_date,))
         available_materials = cursor.fetchall()
         conn.close()
-
-        # Rendre une partie HTML à injecter dans la page via AJAX
         return render_template('material_availability.html', available_materials=available_materials)
     else:
         return redirect('/')
-    
+
+@app.route('/report', methods=['GET'])
+def formulaire_signalement():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('report.html')
+    else:
+        return redirect('/')
+
+@app.route('/booking', methods=['GET'])
+def formulaire_reservation():
+    if 'authentifie' in session and session['authentifie']:
+        return render_template('reservation.html')
+    else:
+        return redirect('/')
 
 
+
+@app.route('/suggestion', methods=['POST'])
+def upload_suggestion():
+    nom_materiel = request.form['nom_materiel']
+    nombre_materiel = request.form['nombre_materiel']
+    description_materiel = request.form['description_materiel']
+    conn = sqlite3.connect('database/database.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO suggestion (titre, quantite, description) VALUES (?,?,?);', (nom_materiel, nombre_materiel, description_materiel))
+    conn.commit()
+    cursor.close
+    conn.close()
+    return redirect('/')
+
+@app.route('/suggestion', methods=['GET'])
+def read_bdd_sugg():
+    if 'authentifie' in session and session['authentifie']:
+        conn = sqlite3.connect('database/database.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT titre, quantite, description FROM suggestion')
+        data = cursor.fetchall()
+        print(data)
+        conn.close()
+
+        return render_template('suggestions.html', data=data)
+    else:
+        return redirect('/sign_in')
 
 if __name__ == '__main__':
     app.run(debug=True)

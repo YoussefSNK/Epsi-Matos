@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 334.77 194.11">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: SourceSansRoman-Bold, 'Source Sans Variable';
+        font-size: 45px;
+        font-variation-settings: 'wght' 700;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        fill: #ff6900;
+      }
+
+      .cls-3, .cls-4 {
+        letter-spacing: .03em;
+      }
+
+      .cls-5 {
+        fill: #37b7d5;
+        letter-spacing: -.05em;
+      }
+
+      .cls-6 {
+        fill: #da4759;
+        letter-spacing: .03em;
+      }
+
+      .cls-7 {
+        fill: #fad053;
+        letter-spacing: .03em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1">
+    <text class="cls-1" transform="translate(164.84 181.15)"><tspan class="cls-7" x="0" y="0">M</tspan><tspan class="cls-5" x="35.46" y="0">A</tspan><tspan class="cls-3" x="59.13" y="0">T</tspan><tspan class="cls-4" x="85.32" y="0" xml:space="preserve">   </tspan><tspan class="cls-6" x="115.83" y="0">S</tspan></text>
+  </g>
+  <g id="Outils">
+    <circle class="cls-2" cx="264.69" cy="165.54" r="6.12"/>
+    <circle class="cls-2" cx="264.56" cy="165.54" r="7.6"/>
+    <circle class="cls-2" cx="264.56" cy="165.54" r="12.56"/>
+    <polygon class="cls-2" points="277.35 172.85 264.69 180.16 252.02 172.85 252.02 158.23 264.69 150.92 277.35 158.23 277.35 172.85"/>
+  </g>
+</svg>

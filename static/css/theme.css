@@ -3,6 +3,7 @@
 :root {
     --deep-purple: #271549;
     --blue: #37B7D5;
+    --dark-blue: #247588;
     --yellow: #FAD053;
     --orange: #FF6900;
     --white: #f6f7fb;
@@ -21,7 +22,8 @@
   }
 
 body {
-  background-color: var(--white)
+  background-color: var(--white);
+  height: 95vh;
 }
 
 a {
@@ -38,8 +40,7 @@ a {
   text-align: center;
   align-content: center;
   padding: 20px;
-  box-shadow: 
-  10px 10px var(--yellow);
+  box-shadow: 10px 10px var(--yellow);
   transition: ease-in-out 0.3s;
 }
 
@@ -51,7 +52,8 @@ a {
 .vertical-line {
   border-left: 1.5px solid var(--deep-purple);
   border-radius: 15px;
-  height: 500px;
+  margin: auto 0;
+  height: 550px;
 }
 
 .page-title {
@@ -65,4 +67,19 @@ a {
 
 .title-return {
   display: flex;
+}
+
+.back-button {
+  margin: 25px 0 0 20px;
+  font-family: math;
+  font-size: 50px; /* Taille de la flèche */
+  color: var(--black); /* Couleur de la flèche */
+  text-decoration: none; /* Supprime le soulignement */
+  background: none; /* Pas de fond */
+  border: none; /* Pas de bordure */
+}
+
+.back-button:hover {
+  color: #4b4e4f;
+  cursor: pointer;
 }

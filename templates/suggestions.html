@@ -11,11 +11,15 @@
 
 <body>
     {% include 'header.html' %}
+    <div class="title-return">
+        <a href="/" class="back-button">&#8592;</a>
+        <div class="page-title">SUGGESTIONS</div>
+    </div>
     <main>
         <div>
             <img src="">
         </div>
-        <div id="form_sugg">
+        <div class="custom-container" id="form_sugg">
             <p id="titre">Faire une suggestion de matériel</p>
             <form method="post" action="" id="formulaire_suggestion">
                 <div id="form">
@@ -35,10 +39,7 @@
                 </div>
             </form>
         </div>
-        <div>
-            <p>Voir les autres suggestions</p>
-            <img src="">
-        </div>
+        <p id="sugg-text">Voir les autres suggestions</p>
         <div id="les_autres_suggestions">
 
             {% for row in data %}
@@ -55,7 +56,6 @@
             </div>
             {% endfor %}
         </div>
-
     </main>
 </body>
 <footer>

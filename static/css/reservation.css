@@ -3,25 +3,11 @@ body{
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-.back-button {
-    font-size: 30px; /* Taille de la flèche */
-    color: var(--black); /* Couleur de la flèche */
-    text-decoration: none; /* Supprime le soulignement */
-    background: none; /* Pas de fond */
-    border: none; /* Pas de bordure */
-}
 
-.back-button:hover {
-    color: #4b4e4f;
-    cursor: pointer;
-}
 
 .container {
-    margin-top: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center; /* Centre les sections horizontalement */
-    height: 85vh; /* Prend toute la hauteur de la page */
+    justify-content: center; /* Centre les sections horizontalement */ /* Prend toute la hauteur de la page */
 }
 
 .section {
@@ -38,14 +24,6 @@ body{
     justify-content: center;
     align-items: center;
 }
-.header-title {
-    font-size: 35px;
-    text-align: left; /* Aligne le texte à gauche */
-    color: black; /* Couleur personnalisée */
-    margin-bottom: 20px; /* Espacement en bas */
-    width: 100%; /* Pour s'assurer que le texte prend toute la largeur */
-}
-
 
 .row {
     display: flex;
@@ -56,67 +34,61 @@ body{
 }
 
 .circle {
+    font-size: 1.1rem;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #935B9E; /* Violet */
+    background-color: var(--light-purple);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
     margin-right: 10px;
-    padding: 1px;
 }
 
 .row-text {
     flex-grow: 1;
     text-align: left;
+    font-size: 1.1rem;
 }
 
 .row button {
-    font-size: 30px;
-    padding: 8px 12px;
-    background-color: #37B7D5;
+    font-size: 1.1rem;
+    padding: 10px;
+    background-color: var(--blue);
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 10px;
+    transition: ease-in-out 0.2s;
 }
 
 .row .button_unavailable {
-    font-size: 30px;
-    padding: 8px 12px;
-    background-color: #C6C6C6;
-    color: #767676;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
+    background-color: var(--white);
+    color: var(--grey);
+    cursor: default;
 }
 
 .row button:hover {
-    background-color: #0D839F;
-}
-
-.row .button_unavailable {
-    font-size: 30px;
-    padding: 8px 12px;
-    background-color: #C6C6C6;
-    color: #767676;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
+    background-color: var(--dark-blue);
 }
 
 .row .button_unavailable:hover {
-    background-color: #C6C6C6;
+    background-color: var(--white);
 }
 
-/* Centrer le séparateur entre les sections */
-.separator {
-    width: 3px;
-    background-color: #935B9E;
-    height: 80%; /* La hauteur du séparateur */
-    margin: 0 20px; /* Ajouter de l'espace des deux côtés du séparateur */
+.header-title {
+    font-size: 1.3rem;
+    text-align: start;
 }
 
+.validate-button {
+    font-size: 1.1rem;
+    padding: 10px;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: ease-in-out 0.2s;
+}

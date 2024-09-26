@@ -144,6 +144,8 @@ def reserve_materials():
         return render_template('material_availability.html', available_materials=available_materials)
     else:
         return redirect('/')
+    
+
 
 
 if __name__ == '__main__':

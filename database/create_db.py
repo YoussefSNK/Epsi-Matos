@@ -8,8 +8,7 @@ with open('schema.sql') as f:
 cur = connection.cursor()
 
 cur.execute("INSERT INTO user (login, password) VALUES (?, ?)",('admin', 'password'))
-cur.execute("INSERT INTO user (login, password) VALUES (?, ?)",('abc', 'abc'))
-cur.execute("INSERT INTO user (login, password) VALUES (?, ?)",('salecon', 'G_R!xjZs7RC3C*.'))
+cur.execute("INSERT INTO user (login, password) VALUES (?, ?)",('hanen', 'G_R!xjZs7RC3C*.'))
 
 cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Projecteur', 'BJ99', '', "ferme", "1"))
 cur.execute("INSERT INTO signalement (titre, salle, description, etat, id_user) VALUES (?, ?, ?, ?, ?)",('Prise', 'BJ12', 'Les prises sont en feu', "en-cours", "1"))

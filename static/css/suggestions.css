@@ -37,13 +37,14 @@ main {
 }
 
 #titre {
-    font-size: 33px;
-    padding-bottom: 25px;
+    font-size: 1.3rem;
+    padding: 25px;
 }
 
 #formulaire_suggestion {
     height: 350px;
     margin: 25px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,4 +106,63 @@ textarea {
     border-color: #37B7D5;
     border-width: 2px;
     cursor: pointer
+}
+
+
+/** Les autres suggestions **/
+
+#les_autres_suggestions {
+    max-width: 1800px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    column-gap: 40px;
+    row-gap: 80px;
+}
+
+#suggestion {
+    width: 528px;
+    max-height: 194px;
+    border: solid 4px #000;
+    border-radius: 15px;
+    box-shadow: 15px 15px var(--light-purple);
+    padding: 11.5px 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#like_suggestion {
+    height: 163px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+#description_suggestion {
+    height: 163px;
+    min-width: 355px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: start;
+}
+
+.description {
+    height: 29px;
+    min-width: 246px;
+    margin: 0px;
+    font-size: 18px;
+}
+
+#description {
+    height: 105px;
+    min-width: 355px;
+    margin: 0px;
+    font-size: 18px;
 }

@@ -109,7 +109,7 @@ def reservation():
     else:
         return redirect('/')
 
-# Route de la page du calendrier, qui affiche le matériel disponible le jour selectionné
+# Route du composant page calendrier, qui affiche le matériel disponible le jour selectionné
 @app.route('/reserve_materials')
 def reserve_materials():
     if 'authentifie' in session and session['authentifie']:
@@ -134,7 +134,7 @@ def reserve_materials():
 @app.route('/booking', methods=['GET'])
 def formulaire_reservation():
     if 'authentifie' in session and session['authentifie']:
-        return render_template('reservation.html')
+        return render_template('suggestions.html')
     else:
         return redirect('/')
 
@@ -155,16 +155,9 @@ def upload_suggestion():
 @app.route('/suggestion', methods=['GET'])
 def read_bdd_sugg():
     if 'authentifie' in session and session['authentifie']:
-        conn = sqlite3.connect('database/database.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT titre, quantite, description FROM suggestion')
-        data = cursor.fetchall()
-        print(data)
-        conn.close()
-
-        return render_template('suggestions.html', data=data)
+        return render_template('dashboard.html')
     else:
-        return redirect('/sign_in')
+        return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

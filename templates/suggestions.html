@@ -11,6 +11,9 @@
 
 <body>
     {% include 'header.html' %}
+    <div class="title-return">
+        <a href="/" class="back-button">&#8592;</a>
+      </div>
     <main>
         <div>
             <img src="">
@@ -55,8 +58,10 @@
             </div>
             {% endfor %}
         </div>
-
     </main>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
 </body>
 <footer>
     {% include 'footer.html' %}

@@ -89,3 +89,7 @@ body {
 .account a:hover {
     text-decoration: underline; 
 }
+#footer-container {
+    position: absolute;
+    bottom: 0;
+}   

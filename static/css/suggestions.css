@@ -37,12 +37,12 @@ main {
 }
 
 #titre {
-    font-size: 1.3rem;
-    padding: 25px;
+    font-size: 33px;
+    padding-bottom: 25px;
+    padding-top: 10px;
 }
 
 #formulaire_suggestion {
-    height: 350px;
     margin: 25px;
     padding: 20px;
     display: flex;
@@ -165,4 +165,8 @@ textarea {
     min-width: 355px;
     margin: 0px;
     font-size: 18px;
+}
+#footer-container {
+    position: relative;
+    bottom: 0;
 }

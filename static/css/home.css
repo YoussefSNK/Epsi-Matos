@@ -101,3 +101,7 @@
     border-radius: 15px;
     background-color: orange;
 }
+#footer-container {
+    position: absolute;
+    bottom: 0;
+}

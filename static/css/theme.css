@@ -21,7 +21,8 @@
   }
 
 body {
-  background-color: var(--white)
+  background-color: var(--white);
+  height: 95vh;
 }
 
 a {
@@ -64,4 +65,19 @@ a {
 
 .title-return {
   display: flex;
+}
+
+.back-button {
+  margin-left: 10px;
+  font-family: math;
+  font-size: 50px; /* Taille de la flèche */
+  color: var(--black); /* Couleur de la flèche */
+  text-decoration: none; /* Supprime le soulignement */
+  background: none; /* Pas de fond */
+  border: none; /* Pas de bordure */
+}
+
+.back-button:hover {
+  color: #4b4e4f;
+  cursor: pointer;
 }

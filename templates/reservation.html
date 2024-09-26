@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reservation</title>
@@ -9,31 +9,30 @@
     <script src="static/js/reservation.js"></script>
 
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-  </head>
-  <body>
+</head>
+<body>
     {% include 'header.html' %}
     <div class="title-return">
-      <a href="/" class="back-button">&#8592;</a>
-      <div class="page-title">RESERVATION</div>
+        <a href="/" class="back-button">&#8592;</a>
+        <div class="page-title">RESERVATION</div>
     </div>
-    <!-- Flèche de retour -->
     <div class="container">
-      <!-- Deuxième section (droite) maintenant à gauche -->
-      <div class="section">
-        <div class="elegant-calencar">
-          <p id="reset">reset</p>
-          <div id="header" class="clearfix">
-            <div class="pre-button"><</div>
-            <div class="head-info">
-              <div class="head-day"></div>
-              <div class="head-month"></div>
-            </div>
-            <div class="next-button">></div>
-          </div>
-          <table id="calendar">
+        <!-- Section droite -->
+        <div class="section">
+            <div class="elegant-calencar">
+                <p id="reset">reset</p>
+                <div id="header" class="clearfix">
+                    <div class="pre-button"><</div>
+                    <div class="head-info">
+                        <div class="head-day"></div>
+                        <div class="head-month"></div>
+                    </div>
+                    <div class="next-button">></div>
+                </div>
+                <table id="calendar">
             <thead>
               <tr>
                 <th>Sun</th>
@@ -103,31 +102,122 @@
             </tbody>
           </table>
         </div>
-        <button class="custom-container">Validez</button>
+        <button class="custom-container" type="button" onclick="submitReservation()">Validez</button>
       </div>
 
       <!-- Trait séparateur vertical, centré entre les sections -->
       <div class="separator"></div>
 
-      <!-- Première section (gauche) maintenant à droite -->
+      <!-- Section gauche -->
       <div class="section section-left">
-        <h2 class="header-title">Quel matériel voulez-vous emprunter ?</h2>
-        <!-- Chaque ligne avec cercle, texte et bouton -->
+          <h2 class="header-title">Quel matériel voulez-vous emprunter ?</h2>
 
-        <div id="material-availability">
-          {% for materiel in available_materials %}
-          <div class="row">
-            <div class="circle">{{ materiel[1] }}</div>
-            <div class="row-text">{{ materiel[0] }}</div>
-            <button onclick="changeColor(this)">Je réserve</button>
-          </div>
-          {% endfor %}
-        </div>
+          <form id="reservation-form" method="POST" action="/confirm_reservation">
+              {% include 'material_availability.html' %}
+              <input type="hidden" id="selected-materials" name="selected_materials" value="">
+              <input type="hidden" id="selected-date" name="selected_date" value="">
+          </form>
       </div>
-    </div>
-    <script src="static/js/calendrier.js"></script>
-  </body>
-  <footer>
-    {% include 'footer.html' %}
-  </footer>
+  </div>
+
+  <script>
+      const selectedMaterials = [];
+
+      function selectMaterial(materialName, button) {
+          if (!selectedMaterials.includes(materialName)) {
+              selectedMaterials.push(materialName);
+              button.style.backgroundColor = "#271549"; // Visuel de sélection
+              button.classList.add('selected'); // Ajout de la classe 'selected'
+          } else {
+              const index = selectedMaterials.indexOf(materialName);
+              selectedMaterials.splice(index, 1);
+              button.style.backgroundColor = ""; // Annulation de sélection
+              button.classList.remove('selected'); // Retrait de la classe 'selected'
+          }
+          document.getElementById('selected-materials').value = selectedMaterials.join(',');
+      }
+
+      // Remplir la date sélectionnée au moment du clic
+      document.addEventListener('DOMContentLoaded', () => {
+          const today = new Date().toISOString().split('T')[0]; // Format YYYY-MM-DD
+          // document.getElementById('selected-date').value = today; Initialiser avec la date d'aujourd'hui
+      });
+
+      function submitReservation() {
+        // Récupérer la date sélectionnée depuis le calendrier
+        const day = document.querySelector('.head-day').innerText;
+        const month = document.querySelector('.head-month').innerText;
+        const year = new Date().getFullYear(); // Obtenir l'année actuelle
+        
+        // Convertir le nom du mois en nombre
+        const monthMapping = {
+            "Jan": "01",
+            "Feb": "02",
+            "Mar": "03",
+            "Apr": "04",
+            "May": "05",
+            "Jun": "06",
+            "Jul": "07",
+            "Aug": "08",
+            "Sep": "09",
+            "Oct": "10",
+            "Nov": "11",
+            "Dec": "12"
+        };
+        const monthNumber = monthMapping[month.substr(0, 3)]; // Utiliser les trois premières lettres du mois
+    
+        // Construire la date au format YYYY-MM-DD
+        const selectedDate = `${year}-${monthNumber}-${day.padStart(2, '0')}`; // Ajouter un zéro si le jour est < 10
+    
+        // Récupérer l'ID de l'utilisateur
+        const userId = {{ session['user_id'] }};
+    
+        // Vérifier que des matériaux ont été sélectionnés
+        if (selectedMaterials.length > 0) {
+          fetch('/confirm_reservation', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  date_emprunt: selectedDate,
+                  user_id: userId,
+                  materials: selectedMaterials
+              })
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  // Créer et afficher la pop-up
+                  const popup = document.createElement('div');
+                  popup.innerText = "Réservation réussie !";
+                  popup.className = "popup-success";
+                  document.body.appendChild(popup);
+
+                  // Cacher la pop-up après 4 secondes
+                  setTimeout(() => {
+                      popup.style.opacity = '0';
+                      setTimeout(() => popup.remove(), 1000);
+                  }, 4000);
+
+                  // Rediriger vers la page d'accueil après la création de la réservation
+                  setTimeout(() => {
+                      window.location.href = data.redirect;
+                  }, 4000); // Attendre 4 secondes avant la redirection
+              } else {
+                  alert("Erreur lors de la réservation.");
+              }
+          })
+          .catch(error => console.error('Erreur:', error));
+      } else {
+          alert('Veuillez sélectionner au moins un matériel.');
+      }
+  }
+</script>
+
+  <script src="static/js/calendrier.js"></script>
+</body>
+<footer>
+  {% include 'footer.html' %}
+</footer>
 </html>

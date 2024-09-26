@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import sqlite3
 from datetime import datetime
 
@@ -110,7 +110,6 @@ def reservation():
         return redirect('/')
 
 # Route du composant page calendrier, qui affiche le matériel disponible le jour selectionné
-# Route du composant page calendrier, qui affiche le matériel disponible le jour selectionné
 @app.route('/reserve_materials')
 def reserve_materials():
     if 'authentifie' in session and session['authentifie']:
@@ -132,8 +131,36 @@ def reserve_materials():
     else:
         return redirect('/')
 
-# ----------------------------- SIGNALEMENT -----------------------------
-# Route de la page du signalement
+
+@app.route('/confirm_reservation', methods=['POST'])
+def confirm_reservation():
+    if 'authentifie' in session and session['authentifie']:
+        data = request.get_json()
+        date_emprunt = data.get('date_emprunt')
+        user_id = session.get('user_id')
+        materials = data.get('materials')
+
+        if not date_emprunt or not user_id or not materials:
+            return jsonify({"success": False, "message": "Données manquantes."}), 400
+
+        conn = sqlite3.connect('database/database.db')
+        cursor = conn.cursor()
+        
+        for material in materials:
+            cursor.execute('''
+                INSERT INTO reservation (date_emprunt, debut_emprunt_heure, fin_emprunt_heure, id_user, id_materiel)
+                VALUES (?, ?, ?, ?, (SELECT id FROM materiel WHERE nom = ?))
+            ''', (date_emprunt, 9, 18, user_id, material))
+
+        conn.commit()
+        conn.close()
+        
+        return jsonify({"success": True, 'redirect': '/reservation'})
+    else:
+        return jsonify({"success": False, "message": "Utilisateur non authentifié."}), 401
+
+
+
 # ----------------------------- SIGNALEMENT -----------------------------
 # Route de la page du signalement
 @app.route('/report', methods=['GET'])
@@ -152,17 +179,6 @@ def formulaire_suggestion():
     else:
         return redirect('/')
 
-# ----------------------------- DASHBOARD -----------------------------
-@app.route('/dashboard')
-def dashboard():
-# ----------------------------- SUGGESTION -----------------------------
-# Route de la page de suggestion
-@app.route('/suggestion', methods=['GET'])
-def formulaire_suggestion():
-    if 'authentifie' in session and session['authentifie']:
-        return render_template('suggestions.html')
-    else:
-        return redirect('/')
 
 # ----------------------------- DASHBOARD -----------------------------
 @app.route('/dashboard')
@@ -171,8 +187,10 @@ def dashboard():
         return render_template('dashboard.html')
     else:
         return redirect('/')
-=========
->>>>>>>>> Temporary merge branch 2
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

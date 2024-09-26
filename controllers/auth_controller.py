@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect
-from models.auth_model import verify_credentials
+from models.auth_model import verify_credentials, create_user
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -11,13 +11,14 @@ def formulaire_client():
 def enregistrer_client():
     login = request.form['login']
     password = request.form['password']
+    create_user(login, password)
     user = verify_credentials(login, password)
 
     if user:
         session['authentifie'] = True
         session['user_id'] = user[0]
         return redirect('/')
-    return redirect('/')
+    return redirect('/sign_in')
 
 @auth_bp.route('/sign_in', methods=['GET', 'POST'])
 def authentification():

@@ -20,7 +20,7 @@
     </div>
     <form
       class="custom-container"
-      action="{{ url_for('authentification') }}"
+      action="{{ url_for('auth.authentification') }}"
       method="post"
     >
       <h2>Connexion</h2>
@@ -35,7 +35,7 @@
 
       <p class="no-account">
         Vous n'avez pas de compte ?
-        <a href="{{ url_for('formulaire_client') }}">Inscrivez-vous</a>
+        <a href="{{ url_for('auth.formulaire_client') }}">Inscrivez-vous</a>
       </p>
     </form>
   </body>

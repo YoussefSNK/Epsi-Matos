@@ -14,15 +14,14 @@ body {
     padding: 10px; /* Ajoute un peu de rembourrage */
 }
 .custom-container{
-    width: 300px;
+    width: 20%;
 }
 
 .btn-group {
     display: flex;
     justify-content: space-evenly;
-    margin: 30px;
+    margin: 30px 10px;
 }
-
 
 #sig:hover{
     box-shadow: 15px 15px var(--yellow); /* Ombre jaune */
@@ -51,9 +50,6 @@ body {
 #sto{
     box-shadow: 10px 10px var(--dark-grey); /* Ombre jaune plus prononcée au survol */
 }
-
-
-
 
 .allTicket{
     display: flex;

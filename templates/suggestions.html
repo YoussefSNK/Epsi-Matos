@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../static\css\suggestions.css">
     <title>Suggestion de matériel</title>
 </head>
@@ -21,19 +20,19 @@
         </div>
         <div class="custom-container" id="form_sugg">
             <p id="titre">Faire une suggestion de matériel</p>
-            <form method="post" action="" id="formulaire_suggestion">
+            <form method="post" action="{{ url_for('suggestion.upload_suggestion') }}" id="formulaire_suggestion">
                 <div id="form">
                     <div class="input_form">
                         <label for="nom_mat">Nom du matériel :</label>
-                        <input class="input" type="text" name="nom_materiel">
+                        <input class="input" type="text" name="nom_materiel" required>
                     </div>
                     <div class="input_form">
                         <label for="nombre_mat">Nombre :</label>
-                        <input class="input" type="number" name="nombre_materiel">
+                        <input class="input" type="number" name="nombre_materiel" required>
                     </div>
                     <div class="input_form">
                         <label for="descr_mat">Description du matériel et de son utilité :</label>
-                        <textarea type="text" name="description_materiel" rows="4"></textarea>
+                        <textarea type="text" name="description_materiel" rows="4" required></textarea>
                     </div>
                     <div id="bouton_form_suggestion"><input type="submit" value="Envoyer" id="bouton_form"></div>
                 </div>

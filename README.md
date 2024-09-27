@@ -29,7 +29,7 @@ Administrateur
   git clone https://github.com/YoussefSNK/Epsi-Matos.git
 
 - Installez les dépendances
-  ???
+  pip install -r requirements.txt
 
 - Démarrer le serveur
 

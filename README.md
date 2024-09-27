@@ -34,7 +34,7 @@ Administrateur
 - Démarrer le serveur
 
 ```bash
-  python __init__.py
+  python app.py
 ```
 
 ## Utilisation
